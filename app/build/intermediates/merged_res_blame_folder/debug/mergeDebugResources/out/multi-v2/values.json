@@ -1,8 +1,25 @@
 {
     "logs": [
         {
-            "outputFile": "com.acurast.wallet.app-mergeDebugResources-54:/values/values.xml",
+            "outputFile": "com.acurast.wallet.app-mergeDebugResources-55:/values/values.xml",
             "map": [
+                {
+                    "source": "/root/.gradle/caches/8.9/transforms/49c298ece4a9cea0c65fb1a907c4fa2d/transformed/androidsvg-aar-1.4/res/values/values.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "141",
+                        "endOffsets": "192"
+                    },
+                    "to": {
+                        "startLines": "399",
+                        "startColumns": "4",
+                        "startOffsets": "21188",
+                        "endColumns": "141",
+                        "endOffsets": "21325"
+                    }
+                },
                 {
                     "source": "/root/.gradle/caches/8.9/transforms/87276dcd722f29e5af2a1622ec410909/transformed/lifecycle-runtime-release/res/values/values.xml",
                     "from": {

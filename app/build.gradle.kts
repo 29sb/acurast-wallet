@@ -62,6 +62,11 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.material:material-icons-extended")
+    // Nova Substrate SDK
+
+    implementation("io.github.nova-wallet:substrate-sdk-android:2.4.0") {
+        exclude(group = "io.github.nova-wallet", module = "fearless-utils")
+    }
     implementation("androidx.navigation:navigation-compose:2.9.0")
     
     // HTTP client

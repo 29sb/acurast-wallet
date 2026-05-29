@@ -48,6 +48,7 @@ MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /root/.gradl
 MERGED from [androidx.core:core-ktx:1.16.0] /root/.gradle/caches/8.9/transforms/17c2fe549bdee82c8867d1e31aa13f00/transformed/core-ktx-1.16.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.room:room-runtime:2.6.1] /root/.gradle/caches/8.9/transforms/59c13b5b1c394ad24696e984e51e2b7d/transformed/room-runtime-2.6.1/AndroidManifest.xml:17:1-31:12
 MERGED from [androidx.room:room-ktx:2.6.1] /root/.gradle/caches/8.9/transforms/7575edbe527bd2298dab375199335693/transformed/room-ktx-2.6.1/AndroidManifest.xml:17:1-22:12
+MERGED from [io.github.nova-wallet:substrate-sdk-android:2.4.0] /root/.gradle/caches/8.9/transforms/86e4e4c30b0313eacabe878e3809be65/transformed/substrate-sdk-android-2.4.0/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.sqlite:sqlite-framework:2.4.0] /root/.gradle/caches/8.9/transforms/ec8621e195a85081fa412220680f7707/transformed/sqlite-framework-2.4.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.sqlite:sqlite:2.4.0] /root/.gradle/caches/8.9/transforms/78d7c5c077665275cc6573aea619258c/transformed/sqlite-2.4.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.compose.runtime:runtime-saveable-android:1.7.8] /root/.gradle/caches/8.9/transforms/d62e128b96ccac186bd0ecf6c44d9601/transformed/runtime-saveable-release/AndroidManifest.xml:2:1-7:12
@@ -60,6 +61,7 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] /root/.gradle/caches/8.9/
 MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /root/.gradle/caches/8.9/transforms/d254f6b8845c065097fb8d760e4c8efe/transformed/profileinstaller-1.4.0/AndroidManifest.xml:17:1-55:12
 MERGED from [androidx.startup:startup-runtime:1.1.1] /root/.gradle/caches/8.9/transforms/33fc610a34f72d3d644af1e5a854635a/transformed/startup-runtime-1.1.1/AndroidManifest.xml:17:1-33:12
 MERGED from [androidx.tracing:tracing:1.2.0] /root/.gradle/caches/8.9/transforms/76ed3e2f8a222e1336bfba2f15c59822/transformed/tracing-1.2.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.caverock:androidsvg-aar:1.4] /root/.gradle/caches/8.9/transforms/49c298ece4a9cea0c65fb1a907c4fa2d/transformed/androidsvg-aar-1.4/AndroidManifest.xml:2:1-11:12
 	package
 		INJECTED from /root/acurast-wallet/app/src/main/AndroidManifest.xml
 	android:versionName
@@ -223,6 +225,8 @@ MERGED from [androidx.room:room-runtime:2.6.1] /root/.gradle/caches/8.9/transfor
 MERGED from [androidx.room:room-runtime:2.6.1] /root/.gradle/caches/8.9/transforms/59c13b5b1c394ad24696e984e51e2b7d/transformed/room-runtime-2.6.1/AndroidManifest.xml:21:5-44
 MERGED from [androidx.room:room-ktx:2.6.1] /root/.gradle/caches/8.9/transforms/7575edbe527bd2298dab375199335693/transformed/room-ktx-2.6.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.room:room-ktx:2.6.1] /root/.gradle/caches/8.9/transforms/7575edbe527bd2298dab375199335693/transformed/room-ktx-2.6.1/AndroidManifest.xml:20:5-44
+MERGED from [io.github.nova-wallet:substrate-sdk-android:2.4.0] /root/.gradle/caches/8.9/transforms/86e4e4c30b0313eacabe878e3809be65/transformed/substrate-sdk-android-2.4.0/AndroidManifest.xml:5:5-7:41
+MERGED from [io.github.nova-wallet:substrate-sdk-android:2.4.0] /root/.gradle/caches/8.9/transforms/86e4e4c30b0313eacabe878e3809be65/transformed/substrate-sdk-android-2.4.0/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.sqlite:sqlite-framework:2.4.0] /root/.gradle/caches/8.9/transforms/ec8621e195a85081fa412220680f7707/transformed/sqlite-framework-2.4.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.sqlite:sqlite-framework:2.4.0] /root/.gradle/caches/8.9/transforms/ec8621e195a85081fa412220680f7707/transformed/sqlite-framework-2.4.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.sqlite:sqlite:2.4.0] /root/.gradle/caches/8.9/transforms/78d7c5c077665275cc6573aea619258c/transformed/sqlite-2.4.0/AndroidManifest.xml:20:5-44
@@ -247,6 +251,8 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /root/.gradle/caches/8.9/tr
 MERGED from [androidx.startup:startup-runtime:1.1.1] /root/.gradle/caches/8.9/transforms/33fc610a34f72d3d644af1e5a854635a/transformed/startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
 MERGED from [androidx.tracing:tracing:1.2.0] /root/.gradle/caches/8.9/transforms/76ed3e2f8a222e1336bfba2f15c59822/transformed/tracing-1.2.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.tracing:tracing:1.2.0] /root/.gradle/caches/8.9/transforms/76ed3e2f8a222e1336bfba2f15c59822/transformed/tracing-1.2.0/AndroidManifest.xml:20:5-44
+MERGED from [com.caverock:androidsvg-aar:1.4] /root/.gradle/caches/8.9/transforms/49c298ece4a9cea0c65fb1a907c4fa2d/transformed/androidsvg-aar-1.4/AndroidManifest.xml:7:5-9:41
+MERGED from [com.caverock:androidsvg-aar:1.4] /root/.gradle/caches/8.9/transforms/49c298ece4a9cea0c65fb1a907c4fa2d/transformed/androidsvg-aar-1.4/AndroidManifest.xml:7:5-9:41
 	android:targetSdkVersion
 		INJECTED from /root/acurast-wallet/app/src/main/AndroidManifest.xml
 	android:minSdkVersion

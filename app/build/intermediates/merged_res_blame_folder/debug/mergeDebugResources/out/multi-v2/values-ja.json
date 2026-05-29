@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.acurast.wallet.app-mergeDebugResources-54:/values-ja/values-ja.xml",
+            "outputFile": "com.acurast.wallet.app-mergeDebugResources-55:/values-ja/values-ja.xml",
             "map": [
                 {
                     "source": "/root/.gradle/caches/8.9/transforms/d54bdae8240429199ceeb6b8ccccccb0/transformed/core-1.16.0/res/values-ja/values-ja.xml",

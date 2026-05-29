@@ -2,6 +2,7 @@ com.acurast.wallet
 attr action
 attr alpha
 attr argType
+attr css
 attr data
 attr dataPattern
 attr destination
@@ -36,6 +37,7 @@ attr restoreState
 attr route
 attr shortcutMatchRequired
 attr startDestination
+attr svg
 attr targetPackage
 attr ttcIndex
 attr uri
@@ -311,3 +313,4 @@ styleable NavGraphNavigator startDestination
 styleable NavHost navGraph
 styleable NavInclude graph
 styleable Navigator android_label android_id route
+styleable SVGImageView css svg

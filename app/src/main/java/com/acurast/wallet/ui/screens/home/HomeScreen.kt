@@ -46,15 +46,8 @@ fun HomeScreen(
         // 查询余额
         isLoading = true
         try {
-            // 模拟查询余额（实际应该使用 Nova SDK）
-            kotlinx.coroutines.delay(1000)
-            balance = AccountBalance(
-                address = testAddress,
-                free = 1000000000000, // 1000 ACU
-                reserved = 500000000000, // 500 ACU
-                miscFrozen = 200000000000, // 200 ACU
-                feeFrozen = 100000000000 // 100 ACU
-            )
+            // 使用 Nova SDK 查询真实余额
+            balance = repository.getBalance(testAddress)
         } catch (e: Exception) {
             errorMessage = "查询余额失败: ${e.message}"
         } finally {
