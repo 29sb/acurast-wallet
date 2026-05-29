@@ -1,0 +1,10 @@
+R_DEF: Internal format may change without notice
+local
+color acurast_accent
+color acurast_purple
+color acurast_purple_dark
+color black
+color white
+string action_settings
+string app_name
+style Theme.AcurastWallet

@@ -1,0 +1,7 @@
+<resources>
+    <style name="Theme.AcurastWallet" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:colorPrimary">@color/acurast_purple</item>
+        <item name="android:colorPrimaryDark">@color/acurast_purple_dark</item>
+        <item name="android:colorAccent">@color/acurast_accent</item>
+    </style>
+</resources>
