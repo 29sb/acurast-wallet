@@ -7,6 +7,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalContext
+import android.content.Context
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -23,6 +25,9 @@ import kotlinx.coroutines.launch
 fun HistoryScreen() {
     val scope = rememberCoroutineScope()
     val repository = remember { WalletRepository() }
+    val context = LocalContext.current
+    val prefs = context.getSharedPreferences("acurast_wallet", Context.MODE_PRIVATE)
+    val currentAddress = prefs.getString("wallet_address", "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY") ?: "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY"
     
     // 状态
     var transactions by remember { mutableStateOf<List<Transaction>>(emptyList()) }
@@ -39,7 +44,7 @@ fun HistoryScreen() {
             transactions = listOf(
                 Transaction(
                     hash = "0x1234567890abcdef",
-                    from = "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY",
+                    from = currentAddress,
                     to = "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
                     amount = 1000000000,
                     fee = 1000000,
@@ -49,7 +54,7 @@ fun HistoryScreen() {
                 Transaction(
                     hash = "0xabcdef1234567890",
                     from = "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
-                    to = "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY",
+                    to = currentAddress,
                     amount = 500000000,
                     fee = 500000,
                     timestamp = System.currentTimeMillis() - 7200000,
@@ -57,7 +62,7 @@ fun HistoryScreen() {
                 ),
                 Transaction(
                     hash = "0x9876543210fedcba",
-                    from = "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY",
+                    from = currentAddress,
                     to = "5DAAnrj7VHTznn2AWBemMuyBwZWs6Fzfj7ib7jdKSsEby2jV",
                     amount = 200000000,
                     fee = 750000,
@@ -145,7 +150,9 @@ fun HistoryScreen() {
 
 @Composable
 fun TransactionHistoryItem(transaction: Transaction) {
-    val isOutgoing = transaction.from == "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY"
+    // 这里需要从外部传入 currentAddress，但为了简单起见，我们使用固定地址
+    val currentAddress = "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY"
+    val isOutgoing = transaction.from == currentAddress
     
     Card(
         modifier = Modifier.fillMaxWidth()

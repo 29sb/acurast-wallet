@@ -8,6 +8,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalContext
+import android.content.Context
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
@@ -36,7 +38,9 @@ fun TransferScreen(
     var showConfirmation by remember { mutableStateOf(false) }
     
     // 当前钱包地址（模拟）
-    val currentAddress = "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY"
+    val context = LocalContext.current
+    val prefs = context.getSharedPreferences("acurast_wallet", Context.MODE_PRIVATE)
+    val currentAddress = prefs.getString("wallet_address", "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY") ?: "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY"
     
     Scaffold(
         topBar = {

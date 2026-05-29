@@ -223,11 +223,12 @@ fun HomeScreen(
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     
-                    // 模拟交易数据
+                    // 模拟交易数据（使用当前钱包地址）
+                    val walletAddress = (walletState as? WalletState.HasWallet)?.account?.address ?: ""
                     val recentTransactions = listOf(
                         Transaction(
                             hash = "0x1234567890abcdef",
-                            from = "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY",
+                            from = walletAddress,
                             to = "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
                             amount = 1000000000,
                             fee = 1000000,
@@ -237,7 +238,7 @@ fun HomeScreen(
                         Transaction(
                             hash = "0xabcdef1234567890",
                             from = "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
-                            to = "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY",
+                            to = walletAddress,
                             amount = 500000000,
                             fee = 500000,
                             timestamp = System.currentTimeMillis() - 7200000,
