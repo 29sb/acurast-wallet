@@ -39,7 +39,11 @@ class WalletRepository {
             throw Exception("生成的种子无效")
         }
         
-        val keypair = SubstrateKeypairFactory.generate(EncryptionType.SR25519, result.seed, emptyList())
+        // SR25519 需要 32 字节种子，但 SubstrateSeedFactory 返回 64 字节
+        // 截取前 32 字节作为 SR25519 种子
+        val seed32 = result.seed.copyOfRange(0, 32)
+        
+        val keypair = SubstrateKeypairFactory.generate(EncryptionType.SR25519, seed32, emptyList())
         val address = keypair.publicKey.toAddress(ss58Prefix)
         
         return WalletCreationResult(
@@ -61,7 +65,11 @@ class WalletRepository {
             throw Exception("恢复的种子无效")
         }
         
-        val keypair = SubstrateKeypairFactory.generate(EncryptionType.SR25519, result.seed, emptyList())
+        // SR25519 需要 32 字节种子，但 SubstrateSeedFactory 返回 64 字节
+        // 截取前 32 字节作为 SR25519 种子
+        val seed32 = result.seed.copyOfRange(0, 32)
+        
+        val keypair = SubstrateKeypairFactory.generate(EncryptionType.SR25519, seed32, emptyList())
         val address = keypair.publicKey.toAddress(ss58Prefix)
         
         return WalletCreationResult(
