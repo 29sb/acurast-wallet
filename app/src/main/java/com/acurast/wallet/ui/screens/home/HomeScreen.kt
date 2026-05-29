@@ -36,12 +36,15 @@ fun HomeScreen(
     var isLoading by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
     
+    // 当前钱包地址
+    val prefs = context.getSharedPreferences("acurast_wallet", Context.MODE_PRIVATE)
+    val currentAddress = prefs.getString("wallet_address", "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY") ?: "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY"
+    
     // 从本地存储读取钱包状态
     LaunchedEffect(Unit) {
         // 从 SharedPreferences 读取钱包状态
-        val prefs = context.getSharedPreferences("acurast_wallet", Context.MODE_PRIVATE)
-        val savedAddress = prefs.getString("wallet_address", null)
-        val savedName = prefs.getString("wallet_name", "我的钱包")
+                val savedAddress = prefs.getString("wallet_address", null)
+            val savedName = prefs.getString("wallet_name", "我的钱包")
         
         if (savedAddress != null) {
             walletState = WalletState.HasWallet(WalletAccount(
@@ -248,7 +251,7 @@ fun HomeScreen(
                     
                     LazyColumn {
                         items(recentTransactions) { transaction ->
-                            TransactionItem(transaction = transaction)
+                            TransactionItem(transaction = transaction, currentAddress = currentAddress)
                             Spacer(modifier = Modifier.height(8.dp))
                         }
                     }
@@ -259,7 +262,7 @@ fun HomeScreen(
 }
 
 @Composable
-fun TransactionItem(transaction: Transaction) {
+fun TransactionItem(transaction: Transaction, currentAddress: String) {
     Card(
         modifier = Modifier.fillMaxWidth()
     ) {
@@ -270,12 +273,12 @@ fun TransactionItem(transaction: Transaction) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
-                if (transaction.from == "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY") 
+                if (transaction.from == currentAddress) 
                     Icons.Default.KeyboardArrowUp 
                 else 
                     Icons.Default.KeyboardArrowDown,
                 contentDescription = null,
-                tint = if (transaction.from == "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY") 
+                tint = if (transaction.from == currentAddress) 
                     MaterialTheme.colorScheme.error 
                 else 
                     MaterialTheme.colorScheme.primary
@@ -283,7 +286,7 @@ fun TransactionItem(transaction: Transaction) {
             Spacer(modifier = Modifier.width(16.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    if (transaction.from == "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY") "发送" else "接收",
+                    if (transaction.from == currentAddress) "发送" else "接收",
                     style = MaterialTheme.typography.bodyLarge
                 )
                 Text(
