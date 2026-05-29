@@ -235,6 +235,7 @@ fun CreateWalletScreen(
                                             val editor = prefs.edit()
                                             editor.putString("wallet_address", createdAddress)
                                             editor.putString("wallet_name", walletName.ifEmpty { "我的钱包" })
+                                            editor.putString("wallet_mnemonic", mnemonicWords.joinToString(" "))
                                             editor.apply()
                                         }
                                         currentStep = 3
