@@ -33,6 +33,12 @@ class WalletRepository {
      */
     fun generateWallet(mnemonicLength: Mnemonic.Length = Mnemonic.Length.TWELVE): WalletCreationResult {
         val result = SubstrateSeedFactory.createSeed(mnemonicLength, null)
+        
+        // 检查 seed 是否有效
+        if (result.seed.isEmpty()) {
+            throw Exception("生成的种子无效")
+        }
+        
         val keypair = SubstrateKeypairFactory.generate(EncryptionType.SR25519, result.seed, emptyList())
         val address = keypair.publicKey.toAddress(ss58Prefix)
         
@@ -49,6 +55,12 @@ class WalletRepository {
      */
     fun restoreWallet(mnemonicWords: String): WalletCreationResult {
         val result = SubstrateSeedFactory.deriveSeed(mnemonicWords, null)
+        
+        // 检查 seed 是否有效
+        if (result.seed.isEmpty()) {
+            throw Exception("恢复的种子无效")
+        }
+        
         val keypair = SubstrateKeypairFactory.generate(EncryptionType.SR25519, result.seed, emptyList())
         val address = keypair.publicKey.toAddress(ss58Prefix)
         
