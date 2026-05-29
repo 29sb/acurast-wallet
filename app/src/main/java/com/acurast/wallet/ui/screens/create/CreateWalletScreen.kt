@@ -12,6 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.acurast.wallet.data.model.*
+import android.content.Context
+import androidx.compose.ui.platform.LocalContext
 import com.acurast.wallet.data.repository.WalletRepository
 import kotlinx.coroutines.launch
 
@@ -24,6 +26,7 @@ fun CreateWalletScreen(
     onNavigateBack: () -> Unit,
     onWalletCreated: () -> Unit
 ) {
+    val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val repository = remember { WalletRepository() }
     
@@ -226,10 +229,14 @@ fun CreateWalletScreen(
                                 isLoading = true
                                 scope.launch {
                                     try {
-                                        // 实际应该使用 Nova SDK 创建钱包
-                                        // 这里模拟创建
-                                        kotlinx.coroutines.delay(1000)
-                                        createdAddress = "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY"
+                                        // 钱包已经在 LaunchedEffect 中创建了，这里保存到本地存储
+                                        if (createdAddress != null) {
+                                            val prefs = context.getSharedPreferences("acurast_wallet", Context.MODE_PRIVATE)
+                                            val editor = prefs.edit()
+                                            editor.putString("wallet_address", createdAddress)
+                                            editor.putString("wallet_name", walletName.ifEmpty { "我的钱包" })
+                                            editor.apply()
+                                        }
                                         currentStep = 3
                                     } catch (e: Exception) {
                                         errorMessage = "创建钱包失败: ${e.message}"

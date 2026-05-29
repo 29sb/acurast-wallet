@@ -12,6 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.acurast.wallet.data.model.*
+import android.content.Context
+import androidx.compose.ui.platform.LocalContext
 import com.acurast.wallet.data.repository.WalletRepository
 import kotlinx.coroutines.launch
 
@@ -24,6 +26,7 @@ fun HomeScreen(
     onNavigateToCreate: () -> Unit,
     onNavigateToTransfer: () -> Unit
 ) {
+    val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val repository = remember { WalletRepository() }
     
@@ -35,17 +38,23 @@ fun HomeScreen(
     
     // 从本地存储读取钱包状态
     LaunchedEffect(Unit) {
-        // TODO: 从 SharedPreferences 或数据库读取钱包状态
-        // 如果没有钱包，显示创建界面
-        walletState = WalletState.NoWallet
+        // 从 SharedPreferences 读取钱包状态
+        val prefs = context.getSharedPreferences("acurast_wallet", Context.MODE_PRIVATE)
+        val savedAddress = prefs.getString("wallet_address", null)
+        val savedName = prefs.getString("wallet_name", "我的钱包")
         
-        // 如果有钱包，查询余额
-        if (walletState is WalletState.HasWallet) {
-            val address = (walletState as WalletState.HasWallet).account.address
+        if (savedAddress != null) {
+            walletState = WalletState.HasWallet(WalletAccount(
+                address = savedAddress,
+                name = savedName ?: "我的钱包",
+                publicKey = ByteArray(32) // 实际应该保存公钥
+            ))
+            
+            // 查询余额
             isLoading = true
             try {
                 // 使用 Nova SDK 查询真实余额
-                balance = repository.getBalance(address)
+                balance = repository.getBalance(savedAddress)
             } catch (e: Exception) {
                 errorMessage = "查询余额失败: ${e.message}"
             } finally {
