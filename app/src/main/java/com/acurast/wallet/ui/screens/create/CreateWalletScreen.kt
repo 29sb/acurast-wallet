@@ -38,12 +38,10 @@ fun CreateWalletScreen(
     // 生成助记词
     LaunchedEffect(Unit) {
         try {
-            // 实际应该使用 Nova SDK 生成助记词
-            // 这里模拟生成
-            mnemonicWords = listOf(
-                "abandon", "ability", "able", "about", "above", "absent",
-                "absorb", "abstract", "absurd", "abuse", "access", "accident"
-            )
+            // 使用 Nova SDK 生成真实助记词
+            val result = repository.generateWallet()
+            mnemonicWords = result.mnemonic.split(" ")
+            createdAddress = result.address
         } catch (e: Exception) {
             errorMessage = "生成助记词失败: ${e.message}"
         }

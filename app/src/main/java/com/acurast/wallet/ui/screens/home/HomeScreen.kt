@@ -33,25 +33,24 @@ fun HomeScreen(
     var isLoading by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
     
-    // 模拟钱包状态（实际应该从本地存储读取）
+    // 从本地存储读取钱包状态
     LaunchedEffect(Unit) {
-        // 模拟已创建的钱包
-        val testAddress = "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY"
-        walletState = WalletState.HasWallet(WalletAccount(
-            address = testAddress,
-            name = "我的钱包",
-            publicKey = ByteArray(32) // 模拟公钥
-        ))
+        // TODO: 从 SharedPreferences 或数据库读取钱包状态
+        // 如果没有钱包，显示创建界面
+        walletState = WalletState.NoWallet
         
-        // 查询余额
-        isLoading = true
-        try {
-            // 使用 Nova SDK 查询真实余额
-            balance = repository.getBalance(testAddress)
-        } catch (e: Exception) {
-            errorMessage = "查询余额失败: ${e.message}"
-        } finally {
-            isLoading = false
+        // 如果有钱包，查询余额
+        if (walletState is WalletState.HasWallet) {
+            val address = (walletState as WalletState.HasWallet).account.address
+            isLoading = true
+            try {
+                // 使用 Nova SDK 查询真实余额
+                balance = repository.getBalance(address)
+            } catch (e: Exception) {
+                errorMessage = "查询余额失败: ${e.message}"
+            } finally {
+                isLoading = false
+            }
         }
     }
     
